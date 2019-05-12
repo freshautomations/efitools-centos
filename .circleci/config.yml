@@ -1,0 +1,48 @@
+version: 2.1
+
+executors:
+  centos:
+    docker:
+      - image: centos
+
+commands:
+  build:
+    steps:
+      - run:
+          name: Build
+          command: |
+            yum install -y git make
+            make
+  release:
+    steps:
+      - run:
+          name: Release
+          command: |
+            yum install -y git make
+            make
+            make release
+
+jobs:
+  build:
+    executor: centos
+    steps:
+      - checkout
+      - build
+  release:
+    executor: centos
+    steps:
+      - checkout
+      - release
+
+workflows:
+  mini_qa:
+    jobs:
+      - build
+  release_management:
+    jobs:
+      - release:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
