@@ -12,11 +12,10 @@ EFI Tools is a set of applications to manage UEFI Secure Boot under Linux.
 This repository builds EFITools against the latest CentOS release. This keeps EFITools up-to-date and packaged for
 CentOS / RedHat.
 
-The build process takes the latest `master` branch from the kernel Git repos to build the `sbsigntools` and `efitools`
-packages.
+The build process takes the latest commit on the `master` branch from the kernel Git repos to build the `sbsigntools` and `efitools` packages.
 
 ## Todo and ToFix
-* Instead of pulling `master`, the build process should built the latest tagged release. Until this is done, the package
+* Instead of pulling `master`, the build process should build the latest tagged release. Until this is done, the package
 should not be considered for production use.
 * The RPM binaries should be signed using a GPG key. (This is in the works.)
 * A package repository should be set up.
